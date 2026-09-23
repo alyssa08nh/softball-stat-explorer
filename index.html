@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NCAA Division I Softball Performance Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#overview" aria-label="Go to overview"><span class="brand-mark">SB</span><span><strong>NCAA D-I</strong><small>SOFTBALL INSIGHTS</small></span></a>
+    <nav class="nav-tabs" aria-label="Primary navigation"><button class="nav-link active" data-view="overview">Overview</button><button class="nav-link" data-view="explorer">Stat Explorer</button><button class="nav-link" data-view="story">The Power Shift Story</button></nav>
+    <span class="data-status"><i></i> SCORE DATA · 2021–22</span>
+  </header>
+  <main>
+    <section id="overview" class="view active-view">
+      <div class="hero-grid"><div class="hero-copy"><p class="eyebrow">Performance, in context</p><h1>Find the edge<br><em>between the lines.</em></h1><p class="lede">Explore 4,406 NCAA Division I player-season records and see how offensive production separates the teams that score.</p><button class="text-button" data-view-target="explorer">Open the Stat Explorer <span>↗</span></button></div><div class="hero-stat"><span>4,406</span><small>player-season records<br>across two seasons</small></div></div>
+      <div class="section-heading"><div><p class="eyebrow">The landscape</p><h2>Production clusters around the winning edge.</h2></div><p class="section-note">Each dot is a team. Hover to identify the strongest offensive profiles.</p></div>
+      <div class="chart-panel overview-panel"><div class="chart-title"><strong>On-base percentage vs. slugging percentage</strong><span>Team averages · 2021–22</span></div><div class="chart-wrap"><canvas id="overviewChart"></canvas></div></div>
+      <div class="insight-row"><div><span class="accent-number">.340</span><span>average team OBP<br>in the top quartile</span></div><div><span class="accent-number">.417</span><span>average team SLG<br>in the top quartile</span></div><div><span class="accent-number">2 yrs</span><span>of Division I data<br>in this snapshot</span></div></div>
+    </section>
+    <section id="explorer" class="view">
+      <div class="page-intro"><p class="eyebrow">Build your cut</p><h1>Stat Explorer</h1><p>Choose a population and metric to compare player production across the Division I field.</p></div>
+      <div class="filters" aria-label="Dataset filters"><label>Team / Conference<select id="teamFilter"><option value="all">All Division I</option></select></label><label>Season Year<select id="seasonFilter"><option value="all">All seasons</option></select></label><label>Metric<select id="metricFilter"><option value="BA">Batting Average</option><option value="HR">Home Runs</option><option value="OPS">On-base Plus Slugging</option><option value="RBI">Runs Batted In</option><option value="K">Strikeouts</option><option value="SB">Stolen Bases</option></select></label></div>
+      <div class="explorer-grid"><div class="chart-panel"><div class="chart-title"><strong id="barTitle">Top players by Batting Average</strong><span id="rowCount">Loading…</span></div><div class="chart-wrap short"><canvas id="barChart"></canvas></div></div><div class="chart-panel"><div class="chart-title"><strong>Metric vs. playing time</strong><span>Hover for player detail</span></div><div class="chart-wrap short"><canvas id="scatterChart"></canvas></div></div></div>
+      <div class="table-panel"><div class="table-heading"><div><p class="eyebrow">Filtered records</p><h2>Player-level detail</h2></div><span id="tableSummary"></span></div><div class="table-scroll"><table><thead><tr><th>Player</th><th>Team</th><th>Season</th><th>GP</th><th>BA</th><th>OPS</th><th>HR</th><th>RBI</th></tr></thead><tbody id="dataTable"></tbody></table></div></div>
+    </section>
+    <section id="story" class="view story-view">
+      <div class="story-header"><p class="eyebrow">A data story</p><h1>The Rise of the<br><em>Power Hitter</em></h1><p>Home runs are changing the shape of college softball offense. Here is what that shift means for the modern lineup.</p></div>
+      <div class="story-layout"><div class="story-copy"><div class="story-block"><span>01 / CONTEXT</span><p>For decades, small ball defined the college softball playbook: move runners, manufacture pressure, and make every at-bat count. That approach still matters, but the offensive center of gravity is moving.</p></div><div class="story-block"><span>02 / DATA ANALYSIS</span><p>The trend below places home runs per game beside sacrifice bunts per game. As power production climbs, sacrifice bunting steadily recedes, signaling a game that is rewarding slugging depth and longer at-bats.</p></div><div class="story-block"><span>03 / CONCLUSION</span><p>A deeper power profile gives teams more ways to turn a baserunner into a run. The modern roster is built for both: speed and contact at the top, with reliable extra-base threat throughout the order.</p></div></div><div class="chart-panel story-chart"><div class="chart-title"><strong>Power up, small ball down</strong><span>Illustrative season trend · 2018–2024</span></div><div class="chart-wrap"><canvas id="storyChart"></canvas></div><div class="legend"><span><i class="legend-dot power"></i>Home runs / game</span><span><i class="legend-dot small-ball"></i>Sacrifice bunts / game</span></div></div></div>
+    </section>
+  </main>
+  <footer><span>NCAA DIVISION I SOFTBALL PERFORMANCE INSIGHTS</span><span>Source: SCORE Sports Data Repository · Batting Statistics 2021–2022</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
